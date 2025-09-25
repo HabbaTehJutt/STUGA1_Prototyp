@@ -1,87 +1,125 @@
 using UnityEngine;
+using UnityEngine.UI;   
+using System.Collections;
 
-public class FleeFromPlayerRandom : MonoBehaviour
+public class CameraToggle : MonoBehaviour
 {
-    public Transform player;             
-    public float fleeDistance = 5f;      
-    public float maxSpeed = 5f;          
-    public float minSpeed = 1f;          
-    public float slowDownDistance = 15f; 
+    [Header("Kameras")]
+    public Camera fpsCamera;
+    public Camera selfieCamera;
 
-    public float directionChangeInterval = 2f; 
-    public float maxRandomAngle = 45f;         
+    [Header("Sound")]
+    public AudioClip cameraSound;
+    private AudioSource audioSource;
 
-    public float obstacleDetectionDistance = 2f; // Abstand, um Hindernisse zu erkennen
-    public LayerMask obstacleLayer;              // Layer für Hindernisse
+    [Header("Spieler-Referenz")]
+    public Transform player;
 
-    private Vector3 currentDirection;
-    private float directionChangeTimer;
+    [Header("Selfie Einstellungen")]
+    public Vector3 selfieOffset = new Vector3(0f, 1.6f, -1.5f);
+    public KeyCode toggleKey = KeyCode.F;
+
+    [Header("UI")]
+    public Image selfieUIImage; // <- dieses Feld erscheint im Inspector!
+    public Image photoPolaroid;
+
+    [Header("Foto Einstellungen")]
+    public KeyCode takePhotoKey = KeyCode.Space;
+    public float photoDuration = 1f;
+    public int screenshotWidth = 1920;
+    public int screenshotHeight = 1080;
+    public float displayScale = 0.33f;
+    
+    private bool selfieActive = false;
+    private FirstPersonController playerMovementScript;
 
     void Start()
     {
-        if (player == null)
+        if (fpsCamera) fpsCamera.enabled = true;
+        if (selfieCamera) selfieCamera.enabled = false;
+
+        if (selfieUIImage != null)
+            selfieUIImage.gameObject.SetActive(false);
+
+        if (photoPolaroid != null)
+            photoPolaroid.gameObject.SetActive(false);
+
+        if (player != null)
         {
-            Debug.LogError("Player Transform nicht zugewiesen!");
+            playerMovementScript = player.GetComponent<FirstPersonController>();
+            if (playerMovementScript == null)
+                Debug.LogWarning("CameraToggle: FirstPersonController nicht auf Player gefunden");
         }
-        currentDirection = (transform.position - player.position).normalized;
-        directionChangeTimer = directionChangeInterval;
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
     {
-        if (player == null) return;
+        if (Input.GetKeyDown(toggleKey))
+        {
+            selfieActive = !selfieActive;
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            if (fpsCamera) fpsCamera.enabled = !selfieActive;
+            if (selfieCamera) selfieCamera.enabled = selfieActive;
 
-        // Geschwindigkeit abhängig vom Abstand berechnen
-        float speed;
-        if (distanceToPlayer < fleeDistance)
-        {
-            speed = maxSpeed;
-        }
-        else if (distanceToPlayer > slowDownDistance)
-        {
-            speed = minSpeed;
-        }
-        else
-        {
-            float t = (distanceToPlayer - fleeDistance) / (slowDownDistance - fleeDistance);
-            speed = Mathf.Lerp(maxSpeed, minSpeed, t);
+            if (selfieUIImage != null)
+                selfieUIImage.gameObject.SetActive(selfieActive);
+
+            if (playerMovementScript != null)
+                playerMovementScript.enabled = !selfieActive;
         }
 
-        // Wenn Spieler zu nahe ist, direkt weg laufen
-        if (distanceToPlayer < fleeDistance)
+        if (selfieActive && player != null && selfieCamera != null)
         {
-            currentDirection = (transform.position - player.position).normalized;
-        }
-        else
-        {
-            // Timer für zufällige Richtungsänderung
-            directionChangeTimer -= Time.deltaTime;
-            if (directionChangeTimer <= 0f)
-            {
-                directionChangeTimer = directionChangeInterval;
-                float randomAngle = Random.Range(-maxRandomAngle, maxRandomAngle);
-                currentDirection = Quaternion.Euler(0, randomAngle, 0) * (transform.position - player.position).normalized;
-            }
+            Vector3 targetPos = player.position + player.TransformDirection(selfieOffset);
+            selfieCamera.transform.position = targetPos;
+
+            Vector3 lookTarget = player.position + Vector3.up * 1f;
+            selfieCamera.transform.LookAt(lookTarget);
         }
 
-        // Hindernisse erkennen
-        if (Physics.Raycast(transform.position, currentDirection, out RaycastHit hit, obstacleDetectionDistance, obstacleLayer))
+        if (selfieActive && Input.GetKeyDown (takePhotoKey))
         {
-            // Richtung anpassen, z.B. nach links oder rechts ausweichen
-            Vector3 avoidDirection = Vector3.Cross(Vector3.up, hit.normal).normalized;
-            currentDirection = avoidDirection;
+            if (photoPolaroid != null)
+                StartCoroutine(TakeScreenshot());
         }
+    }
 
-        // Bewegung ausführen
-        transform.Translate(currentDirection * speed * Time.deltaTime, Space.World);
+    private IEnumerator TakeScreenshot()
+    {
+         // RenderTexture vorbereiten
+        RenderTexture rt = new RenderTexture(screenshotWidth, screenshotHeight, 24);
+        selfieCamera.targetTexture = rt;
+        Texture2D screenShot = new Texture2D(screenshotWidth, screenshotHeight, TextureFormat.RGB24, false);
 
-        // Drehung des NPCs anpassen
-        if (currentDirection != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(currentDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
-        }
+        // Rendern
+        selfieCamera.Render();
+        RenderTexture.active = rt;
+        screenShot.ReadPixels(new Rect(0, 0, screenshotWidth, screenshotHeight), 0, 0);
+        screenShot.Apply();
+
+        selfieCamera.targetTexture = null;
+        RenderTexture.active = null;
+        Destroy(rt);
+
+        // Als Sprite ins UI
+        Sprite sprite = Sprite.Create(screenShot, new Rect(0, 0, screenShot.width, screenShot.height), new Vector2(0.5f, 0.5f));
+        photoPolaroid.sprite = sprite;
+
+        float displayWidth = screenshotWidth * displayScale;
+        float displayHeight = screenshotHeight * displayScale;
+        photoPolaroid.rectTransform.sizeDelta = new Vector2(screenshotWidth, screenshotHeight);
+        photoPolaroid.preserveAspect = true;
+
+        if (cameraSound != null && audioSource != null)
+            audioSource.PlayOneShot(cameraSound);
+
+        // Polaroid kurz anzeigen
+        photoPolaroid.gameObject.SetActive(true);
+        yield return new WaitForSeconds(photoDuration);
+        photoPolaroid.gameObject.SetActive(false);
     }
 }
