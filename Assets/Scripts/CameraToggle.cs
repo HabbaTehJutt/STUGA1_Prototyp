@@ -8,6 +8,10 @@ public class CameraToggle : MonoBehaviour
     public Camera fpsCamera;
     public Camera selfieCamera;
 
+    [Header("Sound")]
+    public AudioClip cameraSound;
+    private AudioSource audioSource;
+
     [Header("Spieler-Referenz")]
     public Transform player;
 
@@ -46,6 +50,10 @@ public class CameraToggle : MonoBehaviour
             if (playerMovementScript == null)
                 Debug.LogWarning("CameraToggle: FirstPersonController nicht auf Player gefunden");
         }
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -105,6 +113,9 @@ public class CameraToggle : MonoBehaviour
         float displayHeight = screenshotHeight * displayScale;
         photoPolaroid.rectTransform.sizeDelta = new Vector2(screenshotWidth, screenshotHeight);
         photoPolaroid.preserveAspect = true;
+
+        if (cameraSound != null && audioSource != null)
+            audioSource.PlayOneShot(cameraSound);
 
         // Polaroid kurz anzeigen
         photoPolaroid.gameObject.SetActive(true);

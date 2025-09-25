@@ -802,13 +802,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsCamera: {fileID: 1959300468}
   selfieCamera: {fileID: 1055532424}
+  cameraSound: {fileID: 8300000, guid: 33d186d1e1cd14e9fa032bfdddbf39b0, type: 3}
   player: {fileID: 2100259891}
   selfieOffset: {x: 0, y: 0.9, z: -2}
   toggleKey: 102
   selfieUIImage: {fileID: 901061930}
   photoPolaroid: {fileID: 1726405575}
   takePhotoKey: 32
-  photoDuration: 2
+  photoDuration: 1
   screenshotWidth: 700
   screenshotHeight: 400
   displayScale: 0.33
