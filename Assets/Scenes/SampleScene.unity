@@ -474,11 +474,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901061928}
   m_CullTransparentMesh: 1
---- !u!20 &1055532424 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 4081961744104118033, guid: 0f639b024eccd4059b7e8365a170d3e8, type: 3}
-  m_PrefabInstance: {fileID: 495152439197329272}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1167430060
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,19 +795,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d872c6c4f9449bfa8f04b79d839aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsCamera: {fileID: 1959300468}
-  selfieCamera: {fileID: 1055532424}
-  cameraSound: {fileID: 8300000, guid: 33d186d1e1cd14e9fa032bfdddbf39b0, type: 3}
   player: {fileID: 2100259891}
-  selfieOffset: {x: 0, y: 0.9, z: -2}
-  toggleKey: 102
-  selfieUIImage: {fileID: 901061930}
-  photoPolaroid: {fileID: 1726405575}
-  takePhotoKey: 32
-  photoDuration: 1
-  screenshotWidth: 700
-  screenshotHeight: 400
-  displayScale: 0.33
+  fleeDistance: 5
+  maxSpeed: 5
+  minSpeed: 1
+  slowDownDistance: 15
+  directionChangeInterval: 2
+  maxRandomAngle: 45
+  obstacleDetectionDistance: 2
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &1534965688
 Transform:
   m_ObjectHideFlags: 0
@@ -1123,11 +1116,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726405573}
   m_CullTransparentMesh: 1
---- !u!20 &1959300468 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7883413845331312301, guid: 0f639b024eccd4059b7e8365a170d3e8, type: 3}
-  m_PrefabInstance: {fileID: 495152439197329272}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2100259891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5926176061280780578, guid: 0f639b024eccd4059b7e8365a170d3e8, type: 3}
@@ -1369,6 +1357,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4265703626552786814, guid: 5bf9508f769f24ccfbf312890166e53f, type: 3}
+      propertyPath: obstacleLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 4371949565014262274, guid: 5bf9508f769f24ccfbf312890166e53f, type: 3}
       propertyPath: m_Name
       value: NPC
@@ -1417,6 +1409,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2100259891}
+    - target: {fileID: 6998693767271255782, guid: 5bf9508f769f24ccfbf312890166e53f, type: 3}
+      propertyPath: m_Radius
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998693767271255782, guid: 5bf9508f769f24ccfbf312890166e53f, type: 3}
+      propertyPath: m_Center.y
+      value: 2.17
+      objectReference: {fileID: 0}
     - target: {fileID: 7656506284388792448, guid: 5bf9508f769f24ccfbf312890166e53f, type: 3}
       propertyPath: speed
       value: 20
@@ -1429,7 +1429,8 @@ PrefabInstance:
       propertyPath: safeDistance
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4265703626552786814, guid: 5bf9508f769f24ccfbf312890166e53f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6348027557078968054, guid: 5bf9508f769f24ccfbf312890166e53f, type: 3}
     m_AddedGameObjects: []

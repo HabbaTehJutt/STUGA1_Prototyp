@@ -133,8 +133,8 @@ GameObject:
   - component: {fileID: 6689747082752491853}
   - component: {fileID: 1673638578796652778}
   - component: {fileID: 6998693767271255782}
-  - component: {fileID: 4265703626552786814}
   - component: {fileID: 5313019535755068923}
+  - component: {fileID: 4174456788732012331}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -175,7 +175,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4371949565014262274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -236,29 +236,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4265703626552786814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4371949565014262274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5847618c72f1b42fc90be616d9f35863, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 5926176061280780578, guid: 0f639b024eccd4059b7e8365a170d3e8, type: 3}
-  fleeDistance: 10
-  maxSpeed: 20
-  minSpeed: 5
-  slowDownDistance: 15
-  directionChangeInterval: 4
-  maxRandomAngle: 45
-  obstacleDetectionDistance: 10
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &5313019535755068923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +248,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264d739fa848749e5a888a9c566435f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &4174456788732012331
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4371949565014262274}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &3002892121641425352
 PrefabInstance:
   m_ObjectHideFlags: 0
