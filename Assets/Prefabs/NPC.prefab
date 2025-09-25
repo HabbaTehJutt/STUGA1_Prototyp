@@ -175,7 +175,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4371949565014262274}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -253,6 +253,12 @@ MonoBehaviour:
   maxSpeed: 20
   minSpeed: 5
   slowDownDistance: 15
+  directionChangeInterval: 4
+  maxRandomAngle: 45
+  obstacleDetectionDistance: 10
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &5313019535755068923
 MonoBehaviour:
   m_ObjectHideFlags: 0

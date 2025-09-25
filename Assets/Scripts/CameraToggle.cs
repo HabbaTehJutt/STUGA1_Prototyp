@@ -26,8 +26,8 @@ public class CameraToggle : MonoBehaviour
     [Header("Foto Einstellungen")]
     public KeyCode takePhotoKey = KeyCode.Space;
     public float photoDuration = 1f;
-    public int screenshotWidth = 600;
-    public int screenshotHeight = 900;
+    public int screenshotWidth = 1920;
+    public int screenshotHeight = 1080;
     public float displayScale = 0.33f;
     
     private bool selfieActive = false;
