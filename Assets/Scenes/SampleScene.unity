@@ -119,6 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &2103060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1929,6 +1930,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7503917228534022316, guid: ad854d0d4181deb46ad6146db9610547, type: 3}
   m_PrefabInstance: {fileID: 1305102520}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,7 +2004,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6001
+  m_ColorTemperature: 3039
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -2021,7 +2024,7 @@ Transform:
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -31.61, y: 11.65, z: -64.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2050,6 +2053,7 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+<<<<<<< Updated upstream
 --- !u!1001 &412512983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3995,6 +3999,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7503917228534022316, guid: ad854d0d4181deb46ad6146db9610547, type: 3}
   m_PrefabInstance: {fileID: 1695108974}
   m_PrefabAsset: {fileID: 0}
+=======
+--- !u!20 &694520348 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4081961744104118033, guid: 0f639b024eccd4059b7e8365a170d3e8, type: 3}
+  m_PrefabInstance: {fileID: 495152439197329272}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,6 +5912,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+<<<<<<< Updated upstream
 --- !u!4 &1168041244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7853304766737317393, guid: 9ab33b1c80174f343beb0eb0869a833e, type: 3}
@@ -7448,6 +7460,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1628598651010756550, guid: 2b6da63224461e84db2f525bd0658647, type: 3}
   m_PrefabInstance: {fileID: 747660749}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1469151462
 GameObject:
   m_ObjectHideFlags: 0
@@ -7792,6 +7806,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream
+=======
+--- !u!114 &1534965687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534965686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d872c6c4f9449bfa8f04b79d839aa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fpsCamera: {fileID: 1833120488}
+  selfieCamera: {fileID: 694520348}
+  cameraSound: {fileID: 8300000, guid: 33d186d1e1cd14e9fa032bfdddbf39b0, type: 3}
+  player: {fileID: 2100259891}
+  selfieOffset: {x: 0, y: 1.6, z: -1.5}
+  toggleKey: 102
+  selfieUIImage: {fileID: 901061930}
+  photoPolaroid: {fileID: 1726405575}
+  takePhotoKey: 32
+  photoDuration: 1
+  screenshotWidth: 700
+  screenshotHeight: 400
+  displayScale: 0.33
+>>>>>>> Stashed changes
 --- !u!4 &1534965688
 Transform:
   m_ObjectHideFlags: 0
@@ -7807,6 +7849,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!114 &1534965689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9119,6 +9162,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7503917228534022316, guid: ad854d0d4181deb46ad6146db9610547, type: 3}
   m_PrefabInstance: {fileID: 1722861635}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1726405573
 GameObject:
   m_ObjectHideFlags: 0
@@ -9194,6 +9239,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726405573}
   m_CullTransparentMesh: 1
+<<<<<<< Updated upstream
 --- !u!1001 &1727494996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10790,10 +10836,14 @@ Transform:
   m_PrefabInstance: {fileID: 1812569097}
   m_PrefabAsset: {fileID: 0}
 --- !u!20 &1959300468 stripped
+=======
+--- !u!20 &1833120488 stripped
+>>>>>>> Stashed changes
 Camera:
   m_CorrespondingSourceObject: {fileID: 7883413845331312301, guid: 0f639b024eccd4059b7e8365a170d3e8, type: 3}
   m_PrefabInstance: {fileID: 495152439197329272}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!4 &1959305015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1628598651010756550, guid: 2b6da63224461e84db2f525bd0658647, type: 3}
@@ -11196,11 +11246,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25dadb156056fb543a1407b31a4ee35d, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!4 &2100259891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5926176061280780578, guid: 0f639b024eccd4059b7e8365a170d3e8, type: 3}
   m_PrefabInstance: {fileID: 495152439197329272}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!4 &2104501150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7503917228534022316, guid: ad854d0d4181deb46ad6146db9610547, type: 3}
@@ -11430,6 +11483,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad854d0d4181deb46ad6146db9610547, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &495152439197329272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11567,7 +11622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5207933680038891348, guid: 5f1aa891d7c0748c7a4a238313971802, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5207933680038891348, guid: 5f1aa891d7c0748c7a4a238313971802, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11789,6 +11844,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3325577393287790115, guid: 5bf9508f769f24ccfbf312890166e53f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4265703626552786814, guid: 5bf9508f769f24ccfbf312890166e53f, type: 3}
       propertyPath: obstacleLayers.m_Bits
       value: 64
@@ -11885,11 +11944,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 3508393453577573016}
-  - {fileID: 1280441833}
-  - {fileID: 2127325349}
-  - {fileID: 1633704570}
-  - {fileID: 222223142}
-  - {fileID: 1591929608}
   - {fileID: 495152439197329272}
   - {fileID: 7373174035398813364}
   - {fileID: 1534965688}
